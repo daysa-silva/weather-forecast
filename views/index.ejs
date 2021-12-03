@@ -7,5 +7,17 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <form action="/search?source=hp" method="post" id="search-form" >
+
+        <select name="cat" class="form-control" id="cat">
+          <option value="now">Now Forecast</option>
+        </select>
+        
+        <input type="text" id="movie" placeholder="Search" name="location" />
+
+
+      <input type="submit" />
+    </form>
   </body>
 </html>
