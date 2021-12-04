@@ -7,7 +7,10 @@
   <body>
     <h1><%= title %></h1>
     
-    <h3> You search for <strong>dataLocation.location</strong></h3>
+    <p> You search for <strong> <%= data.location%> </strong></p>
+    <p>It's <%= data.description %> out there.
+        The temperature is <%= data.temperature %> °C, but it feels like <%= data.feelsLike %> °C.</p>
     
   </body>
+  <button><a href='/'> Go back </a></button>
 </html>

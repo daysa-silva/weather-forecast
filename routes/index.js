@@ -63,7 +63,7 @@ router.get('/result', (req, res, next) => {
         description: dataWeather.weather_descriptions[0]
       }
     
-      res.send(data)
+      res.render('result', { title: 'Weather Forecast App', data })
     }
   })
 })
