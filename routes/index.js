@@ -29,35 +29,42 @@ router.post('/search', (req, res, next) => {
     } else {
         const dataLocation = response.body.features[0];
 
-        const lat = dataLocation.center[1]
-        const long = dataLocation.center[0]
+        res.cookie('placeName', dataLocation.place_name);
+        res.cookie('latitude', dataLocation.center[1])
+        res.cookie('longitude', dataLocation.center[0])
 
-        const urlWeather = `http://api.weatherstack.com/current?access_key=${API_KEY_WEATHER}&query=${lat},${long}`;
-        
-        request({url: urlWeather, json: true}, (error, response) => {
-          if (error) {
-            res.locals.message = 'Unable to connect to weather service!';
-            res.locals.error = error
-            res.render('error')
-          } else if(response.body.error) {
-            res.locals.message = response.body.error.info;
-            res.locals.error = response.body.error
-            res.render('error')
-          } else {
-              const dataWeather = response.body.current;
-    
-              const data = {
-                location: dataLocation.place_name,
-                temperature: dataWeather.temperature,
-                feelsLike: dataWeather.feelslike,
-                description: dataWeather.weather_descriptions[0]
-              }
-    
-              res.send(data)
-          }
-        })
+        res.redirect('/result')
     }
+  })
+})
+
+router.get('/result', (req, res, next) => {
+  const lat = req.cookies.latitude;
+  const long = req.cookies.longitude;
+
+  const urlWeather = `http://api.weatherstack.com/current?access_key=${API_KEY_WEATHER}&query=${lat},${long}`;
+        
+  request({url: urlWeather, json: true}, (error, response) => {
+    if (error) {
+      res.locals.message = 'Unable to connect to weather service!';
+      res.locals.error = error
+      res.render('error')
+    } else if(response.body.error) {
+      res.locals.message = response.body.error.info;
+      res.locals.error = response.body.error
+      res.render('error')
+    } else {
+      const dataWeather = response.body.current;
     
+      const data = {
+        location: req.cookies.placeName,
+        temperature: dataWeather.temperature,
+        feelsLike: dataWeather.feelslike,
+        description: dataWeather.weather_descriptions[0]
+      }
+    
+      res.send(data)
+    }
   })
 })
 
