@@ -10,6 +10,12 @@ const API_KEY_WEATHER = process.env.API_KEY_WEATHER;
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Weather Forecast App' });
 });
+
+/* GET about page. */
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'About' });
+});
+
 /* POST search */
 router.post('/search', (req, res, next) => {
   const addressURI = encodeURI(req.body.location);

@@ -4,10 +4,15 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <h3>Welcome to <%= title %>. Search the weather for all the world!</h3>
 
+  <body>
+    <header>
+      <h1><%= title %></h1>
+      <% include navbar %>
+
+      <h3>Welcome to <%= title %>. Search the weather for all the world!</h3>
+    </header>
+    
     <form action="/search?source=hp" method="post">
 
         <select name="cat">

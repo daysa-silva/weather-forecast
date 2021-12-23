@@ -5,7 +5,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <header>
+      <h1><%= title %></h1>
+      <% include navbar %>
+    </header>
     
     <p> You search for <strong> <%= data.location%> </strong></p>
     <p>It's <%= data.description %> out there.
