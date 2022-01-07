@@ -36,6 +36,12 @@ header a:hover {
 	background-color: #333333;
 }
 
+.main {
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
 input {
   border: 1px solid #cccccc;
   padding: 8px;
@@ -48,4 +54,8 @@ input {
   color: white;
   padding: 8px;
   text-decoration: none;
+}
+
+button {
+  margin-top: 20px;
 }

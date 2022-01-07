@@ -19,7 +19,7 @@ router.get('/about', function(req, res, next) {
 /* POST search */
 router.post('/search', (req, res, next) => {
   const addressURI = encodeURI(req.body.location);
-  const cat = req.body.cat;
+  //const cat = req.body.cat;
 
   const urlGeo = `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressURI}.json?access_token=${API_KEY_GEO}&limit=1`
   

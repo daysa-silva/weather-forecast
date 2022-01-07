@@ -10,21 +10,24 @@
     <header>
       <h1><%= title %></h1>
       <% include navbar %>
-
-      <h3>Welcome to <%= title %>. Search the weather for all the world!</h3>
     </header>
-    
-    <form action="/search?source=hp" method="post">
 
+    <div class="main">
+      <h3>Welcome to <%= title %>. Search the weather for all the world!</h3>
+
+      <form action="/search?source=hp" method="post">
         <select name="cat">
           <option value="now">Now Forecast</option>
         </select>
-        
         <input type="text" placeholder="Search" name="location" />
 
-      <input type="submit" class="button"/>
-    </form>
-
+        <input type="submit" class="button"/>
+      </form>
     
+      <button>My Current Location</button>
+    </div>
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/index.js"></script>
 </html>
